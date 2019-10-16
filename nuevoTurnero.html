@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -122,79 +120,39 @@
 
         var thisProfesional = [new Profesional('pediatra', 10, 'Jorge', 'Perez', '12345678'), new Profesional('cardiologo', 5, 'Jack', 'Jhonson', '12345678'), new Profesional('oncologo', 3, 'John', 'Jackson', '12345678')];
 
-​
-
         function Paciente(nombre, apellido, dni) {
-
             Persona.call(this, nombre, apellido, dni);
 
             this.tieneTurnoPara = [];
-
             this.pedirTurno = function () {
-
                 var solicitarTurno = prompt('turno con...');
-
                 switch (solicitarTurno) {
-
                     case 'pediatra':
-
                         turnosDisponibles('pediatra');
-
                         tieneTurnoPara.push('pediatra');
-
                         break;
-
                     case 'cardiologo':
-
                         turnosDisponibles('cardiologo');
-
                         tieneTurnoPara.push('cardiologo');
-
                         break;
-
                     case 'oncologo':
-
                         turnosDisponibles('oncologo');
-
                         tieneTurnoPara.push('oncologo');
-
                         break;
-
                     default:
-
                         console.log('no hay turnos disonibles.');
-
                 }
-
             }
-
         }
 
-​
-
         Paciente.prototype = Object.create(Persona.prototype);
-
         Paciente.prototype.constructor = Paciente;
-
         var thisPaciente = [new Paciente('Miguel', 'Sanchez', '12345678'), new Paciente( 'Rosa', 'Schwartz', '12345678'), new Paciente('Marcos', 'Oliva', '12345678')];
 
     // Profesional.prototype = Object.create(Profesion.prototype);
-
-​
-
     // - Cada profesional tiene la capacidad de agregar o eliminar turnos
-
     // - Cada paciente tiene la capacidad de solicitar turnos con un profesional específico.
-
-​
-
-​
-
     </script>
-
 </body>
 
-​
-
 </html>
-
