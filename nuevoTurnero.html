@@ -1,0 +1,200 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+​
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Document</title>
+
+</head>
+
+​
+
+<body>
+
+    <script>
+
+        // Hospital - Sistema de turnos
+
+        // Objetivo
+
+        // Modelar los objetos necesarios para que un paciente pueda solicitar un turno con un profesional específico.
+
+        // Aclaraciones
+
+        // - TODAS las personas tienen nombre, apellido, dni y la capacidad de decir su nombre completo.
+
+        // - Las profesiones deben estar seteadas desde el principio
+
+        // - Cada profesional tiene una profesión, la cual tiene una cantidad máxima de turnos,
+
+        /* - Cada profesional al tener una profesión, tiene una cantidad X  de turnos disponibles por 
+
+            día, entonces si un paciente solicita un turno y ese profesional ya tiene la capacidad cubierta se debe mostrar
+
+            el mensaje informando la situación.*/
+
+        function Persona(nombre, apellido, dni) {
+
+            this.nombre = nombre;
+
+            this.apellido = apellido;
+
+            this.dni = dni;
+
+            this.decirNombreCompleto = ()=>console.log('Soy ' + this.nombre + ' ' + this.apellido + '.');
+
+        }
+
+​
+
+        function Profesion(especialidad, cantTurnos) {
+
+            this.especialidad = especialidad;
+
+            this.cantTurnos = cantTurnos;
+
+            this.hayTurno = true;
+
+            this.turnosEntregados = 0;
+
+            this.mandarInformeDeSituacion = function mandarInformeDeSituacion() {
+
+                if (this.turnosEntregados == this.cantTurnos) {
+
+                    alert('terminé por hoy');
+
+                    return this.hayTurno = false;
+
+                }
+
+            };
+
+        }
+
+        function turnosDisponibles(prof) {
+
+            if (prof.hayTurno) {
+
+                prof.cantTurnos++;
+
+                console.log('su turno es dfsrgefgwrg');
+
+                return;
+
+            }
+
+            console.log('no hay turnos');
+
+        }
+
+​
+
+​
+
+        function Profesional(especialidad, cantTurnos, nombre, apellido, dni) {
+
+            Persona.call(this, nombre, apellido, dni);
+
+            this.profesion = new Profesion(this, especialidad, cantTurnos);
+
+​
+
+        }
+
+​
+
+        Profesional.prototype = Object.create(Persona.prototype);
+
+        Profesional.prototype.constructor = Profesional;
+
+​
+
+        var thisProfesional = [new Profesional('pediatra', 10, 'Jorge', 'Perez', '12345678'), new Profesional('cardiologo', 5, 'Jack', 'Jhonson', '12345678'), new Profesional('oncologo', 3, 'John', 'Jackson', '12345678')];
+
+​
+
+        function Paciente(nombre, apellido, dni) {
+
+            Persona.call(this, nombre, apellido, dni);
+
+            this.tieneTurnoPara = [];
+
+            this.pedirTurno = function () {
+
+                var solicitarTurno = prompt('turno con...');
+
+                switch (solicitarTurno) {
+
+                    case 'pediatra':
+
+                        turnosDisponibles('pediatra');
+
+                        tieneTurnoPara.push('pediatra');
+
+                        break;
+
+                    case 'cardiologo':
+
+                        turnosDisponibles('cardiologo');
+
+                        tieneTurnoPara.push('cardiologo');
+
+                        break;
+
+                    case 'oncologo':
+
+                        turnosDisponibles('oncologo');
+
+                        tieneTurnoPara.push('oncologo');
+
+                        break;
+
+                    default:
+
+                        console.log('no hay turnos disonibles.');
+
+                }
+
+            }
+
+        }
+
+​
+
+        Paciente.prototype = Object.create(Persona.prototype);
+
+        Paciente.prototype.constructor = Paciente;
+
+        var thisPaciente = [new Paciente('Miguel', 'Sanchez', '12345678'), new Paciente( 'Rosa', 'Schwartz', '12345678'), new Paciente('Marcos', 'Oliva', '12345678')];
+
+    // Profesional.prototype = Object.create(Profesion.prototype);
+
+​
+
+    // - Cada profesional tiene la capacidad de agregar o eliminar turnos
+
+    // - Cada paciente tiene la capacidad de solicitar turnos con un profesional específico.
+
+​
+
+​
+
+    </script>
+
+</body>
+
+​
+
+</html>
+
